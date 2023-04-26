@@ -33,7 +33,7 @@
     color: #000;
     font-weight: 600;
     text-transform: normal;
-    line-height:2rem;
+    line-height:0em;
     width: 100%;
     text-transform: capitalize;
 }
@@ -42,8 +42,8 @@
     color: #222;
     font-weight: 700;
     text-transform: normal;
-    margin-top: 20px;
-    line-height:1.5rem;
+    margin-top: 10px;
+    line-height:0rem;
     width: 100%;
     margin-bottom: 5px;
 }
