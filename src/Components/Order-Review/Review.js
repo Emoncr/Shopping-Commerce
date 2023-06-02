@@ -5,6 +5,7 @@ import Cart from "../Cart/Cart"
 import "./review.css"
 import { deleteShoppingCart } from '../../utilities/fakedb';
 import happyimage from "../../images/giphy.gif"
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -12,8 +13,8 @@ import happyimage from "../../images/giphy.gif"
 
 const Review = () => {
   const [reviewCart, setReviewCart] = useState([]);
-  const [placed, setPlacedOrder] = useState(false);
-
+  const [placed, setHandleChcekOut] = useState(false);
+  const navigate = useNavigate();
 
   //get data from localStorage
   useEffect(() => {
@@ -32,12 +33,17 @@ const Review = () => {
 
   })
 
-  const placedOrder = () => {
-    deleteShoppingCart()
-    setPlacedOrder(true)
-    setReviewCart([])
-  }
+  // const HandleChcekOut = () => {
+  //   deleteShoppingCart()
+  //   setHandleChcekOut(true)
+  //   setReviewCart([])
+  // }
   
+  const HandleChcekOut = () => {
+    navigate("/shipment")
+  }
+
+
   let productItem;
   let noProductBtn;
   let thankYou;
@@ -51,10 +57,8 @@ const Review = () => {
     noProductBtn = <button className="btn btn-danger mt-4">Add Your Product Frist</button>
   }
   else {
-    noProductBtn = <button onClick={placedOrder} className="btn btn-success mt-4">Place Order</button>
+    noProductBtn = <button onClick={HandleChcekOut} className="btn btn-success mt-4">Proceed To checkout</button>
   }
-
-
   return (
     <div className="custom_card_container shop-container">
       <div className='product-container'>
@@ -64,12 +68,10 @@ const Review = () => {
         {thankYou}
         {productItem}
       </div>
-
       <div className='cart-container'>
         <Cart cart={products}>
           {noProductBtn}
         </Cart> :
-
       </div>
     </div>
   )
