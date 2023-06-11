@@ -1,0 +1,14 @@
+.error{
+    color: red;
+}
+.shipment-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.shipment-form input{
+    display: block !important;
+    margin: 20px 0;
+    border: 1px solid #111;
+}

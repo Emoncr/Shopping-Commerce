@@ -5,6 +5,8 @@ import { signOut, getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEm
 import { useContext, useState } from 'react';
 import  './Login.css'
 import { userContext } from "../../App.js";
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 const app = initializeApp(firebaseConfig);
 
@@ -14,6 +16,8 @@ function Login() {
   // HANDLING CONTEXT API
   const [loggedInUser, setLoggedInUser] = useContext(userContext);
 
+  const navigate = useNavigate();
+  const location = useLocation()
 
   const [newUser, setNewUser] = useState(false)
 
@@ -126,6 +130,9 @@ function Login() {
           setloginStatus(copyOFloginStatus)
           console.log(user);
           setLoggedInUser(user)
+          if (location.state?.from) {
+            navigate(location.state.from)
+          }
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -243,7 +250,9 @@ function Login() {
 
           // for login
           loginStatus.isLogin ?
+            <>
             <h4>Login Success</h4>
+            </>
             :
             <>
               <h4>Login Failed</h4>
